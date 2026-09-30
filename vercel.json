@@ -1,11 +1,3 @@
 {
-  "name": "the-scientific-operator",
-  "buildCommand": "mkdir -p dist && cp -r static/. dist/",
-  "outputDirectory": "dist",
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "https://the-scientific-operator.onrender.com/api/$1"
-    }
-  ]
+   cleanUrls: true
 }
