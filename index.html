@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Stock Operator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-mesh"></div>
+    
+    <!-- Layer 1: Landing & Auth -->
+    <div id="layer-auth" class="layer active">
+        <div class="landing-container">
+            <div class="hero-section">
+                <h1>Scientific Stock Operator</h1>
+                <p class="subtitle">Never ask capital to obey an untested opinion.</p>
+                <div class="features">
+                    <div class="feature-item">
+                        <span class="icon">📈</span>
+                        <p>Institutional-grade risk management algorithms</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">🛡️</span>
+                        <p>Automated position sizing based on market regimes</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">⚡</span>
+                        <p>Emotionless trading decisions</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="auth-panel">
+                <div class="auth-tabs">
+                    <button class="tab-btn active" id="tab-signin">Sign In</button>
+                    <button class="tab-btn" id="tab-signup">Sign Up</button>
+                </div>
+                <form id="auth-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="trader@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number</label>
+                        <input type="tel" id="mobile" placeholder="+1 (555) 000-0000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your secure password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="auth-submit-btn">Continue to Platform</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layer 2: Paywall / License -->
+    <div id="layer-paywall" class="layer">
+        <div class="paywall-container">
+            <header>
+                <h2>Activate Your Trader's License</h2>
+                <p>Unlock the full power of the Scientific Stock Operator decision engine.</p>
+            </header>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card free-tier">
+                    <h3>Basic Access</h3>
+                    <div class="price">Free</div>
+                    <ul class="features-list">
+                        <li>Basic risk calculations</li>
+                        <li>Standard market regimes</li>
+                        <li>Limited daily analyses</li>
+                    </ul>
+                    <button class="btn btn-outline" id="btn-free-use">Start Free Use</button>
+                </div>
+                
+                <div class="pricing-card premium-tier">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Pro Trader License</h3>
+                    <div class="price">$199<span>/mo</span></div>
+                    <ul class="features-list">
+                        <li>Advanced position sizing logic</li>
+                        <li>Unlimited daily analyses</li>
+                        <li>Priority market alignment warnings</li>
+                        <li>Export trade plans</li>
+                    </ul>
+                    <a href="https://buy.stripe.com/test_00wcMXcxM8u10azcAC2oE08" target="_blank" class="btn btn-primary" style="display: block; text-decoration: none; margin-top: 20px;">Subscribe Now via Stripe</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layer 3: Main App -->
+    <div id="layer-app" class="layer">
+        <div class="app-container">
+            <header class="app-header">
+                <div class="header-content">
+                    <h1>Scientific Stock Operator</h1>
+                    <button class="btn-logout" id="btn-logout">Sign Out</button>
+                </div>
+                <p>Decision Engine Active</p>
+            </header>
+
+            <main>
+                <div class="panel form-panel">
+                    <h2>Trade Configuration</h2>
+                    <form id="decide-form">
+                        <div class="form-group">
+                            <label for="equity">Account Equity ($)</label>
+                            <input type="number" id="equity" value="100000" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="entry">Entry Price</label>
+                                <input type="number" id="entry" step="0.01" value="50.0" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="invalidation">Invalidation Price</label>
+                                <input type="number" id="invalidation" step="0.01" value="48.0" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="adv">Avg Daily Volume</label>
+                                <input type="number" id="adv" value="5000000" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="spread">Bid/Ask Spread</label>
+                                <input type="number" id="spread" step="0.01" value="0.01" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="stock_rs">Stock Rel. Strength</label>
+                                <input type="number" id="stock_rs" step="0.01" value="0.08" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="group_rs">Group Rel. Strength</label>
+                                <input type="number" id="group_rs" step="0.01" value="0.05" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="regime">Market Regime</label>
+                            <select id="regime">
+                                <option value="advance" selected>Advance</option>
+                                <option value="decline">Decline</option>
+                                <option value="range">Range</option>
+                                <option value="unstable">Unstable</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-evaluate">Evaluate Trade</button>
+                    </form>
+                </div>
+
+                <div class="panel results-panel">
+                    <h2>Decision Engine Report</h2>
+                    <div id="results" class="results-empty">
+                        <p>Submit the configuration to see sizing and alignment details.</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
