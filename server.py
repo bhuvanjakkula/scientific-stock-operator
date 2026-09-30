@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from risk_codex import (
     RiskBudget, Thesis, Side, LiquidityProfile, MarketDiagnosis, Regime, decide
@@ -7,7 +8,7 @@ from risk_codex import (
 from fastapi.middleware.cors import CORSMiddleware
 import os
 
-app = FastAPI()
+app = FastAPI(title="Scientific Stock Operator")
 
 app.add_middleware(
     CORSMiddleware,
@@ -16,6 +17,20 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+@app.get("/")
+def get_index():
+    return FileResponse(os.path.join(BASE_DIR, "index.html"))
+
+@app.get("/style.css")
+def get_style():
+    return FileResponse(os.path.join(BASE_DIR, "style.css"))
+
+@app.get("/app.js")
+def get_js():
+    return FileResponse(os.path.join(BASE_DIR, "app.js"))
 
 class DecideRequest(BaseModel):
     equity: float
@@ -60,11 +75,6 @@ def api_decide(req: DecideRequest):
         "reasons": d.reasons,
         "warnings": d.warnings
     }
-
-# Mount static files for the dashboard
-static_dir = os.path.join(os.path.dirname(__file__), "static")
-if os.path.exists(static_dir):
-    app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")
 
 if __name__ == "__main__":
     import uvicorn
